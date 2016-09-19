@@ -256,7 +256,7 @@ public class PivotSelectionFactory extends APivotSelection {
 		Configuration conf = new Configuration();
 		new GenericOptionsParser(conf, args).getRemainingArgs();
 
-		inputPath = conf.get(SQConfig.dataset) + Path.SEPARATOR + "0.data";
+		inputPath = conf.get(SQConfig.dataset) + Path.SEPARATOR + "part-m-00000";
 		outputPath = conf.get(SQConfig.strPivotInput);
 		strDomain = conf.get(SQConfig.strMetricSpace);
 		strMetric = conf.get(SQConfig.strMetric);

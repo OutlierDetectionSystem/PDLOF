@@ -162,11 +162,11 @@ public class MergeIndex {
 								+SQConfig.sepStrForIndex + numOfObjectsLarger11G[i];
 				/** output larger than G and number less than K*/
 				if(KNNObjectsToPivots_S[i].size() < K){
-					System.out.println("Less than K points: " + line);
+//					System.out.println("Less than K points: " + line);
 					countLessThanKPoints++;
 				}
 				if(numOfObjectsLarger11G[i] >0){
-					System.out.println("Larger 11G: " + line);
+//					System.out.println("Larger 11G: " + line);
 					countLarger11G++;
 					countPointsLarger11G += numOfObjectsLarger11G[i];
 				}

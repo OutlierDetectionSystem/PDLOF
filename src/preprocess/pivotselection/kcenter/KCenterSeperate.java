@@ -56,19 +56,19 @@ public class KCenterSeperate {
 		public static int partitionNumPerDim = 201;
 
 		/** The domains. (set by user) */
-		private static double[][] domains;
+//		private static double[] domains;
 
 		/** size of each partition */
-		private static int smallRange;
+//		private static int smallRange;
 
 		protected void setup(Context context) throws IOException, InterruptedException {
 			Configuration conf = context.getConfiguration();
 			num_dims = conf.getInt(SQConfig.strDimExpression, 2);
-			domains = new double[num_dims][2];
-			domains[0][0] = domains[1][0] = conf.getDouble(SQConfig.strDomainMin, 0.0);
-			domains[0][1] = domains[1][1] = conf.getDouble(SQConfig.strDomainMax, 10001);
+//			domains = new double[2];
+//			domains[0]= conf.getDouble(SQConfig.strDomainMin, 0.0);
+//			domains[1] = conf.getDouble(SQConfig.strDomainMax, 10001);
 			partitionNumPerDim = conf.getInt(SQConfig.strNumOfPartitions, 201);
-			smallRange = (int) Math.ceil((domains[0][1] - domains[0][0]) / partitionNumPerDim);
+//			smallRange = (int) Math.ceil((domains[1] - domains[0]) / partitionNumPerDim);
 			// System.out.println("Domain size: " + domains[0][0] + "," +
 			// domains[0][1]);
 			// System.out.println("Small Range : " + smallRange);
@@ -97,7 +97,7 @@ public class KCenterSeperate {
 		public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 			Text dat = new Text(value.toString());
 			Random r = new Random();
-			IntWritable key_id = new IntWritable(r.nextInt(partitionNumPerDim * partitionNumPerDim));
+			IntWritable key_id = new IntWritable(r.nextInt((int)Math.pow(partitionNumPerDim, num_dims)));
 			context.write(key_id, dat);
 		}
 	}

@@ -225,7 +225,7 @@ public class DataSplit {
 		 */
 		public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 			String line = value.toString();
-			int pos = line.indexOf(",");
+//			int pos = line.indexOf(",");
 
 			/** parse the object */
 
