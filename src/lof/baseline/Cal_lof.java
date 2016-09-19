@@ -170,10 +170,10 @@ public class Cal_lof {
 		 */
 		private void CalLOFForSingleObject(Context context, MetricObject o_S, HashMap<Integer, Float> hm)
 				throws IOException, InterruptedException {
-			System.out.println("RID ==== " + ((Record) o_S.obj).getRId());
-			System.out.println("lrd ==== " + o_S.kdist);
-			System.out.println("whoseSupport ==== " + o_S.whoseSupport);
-			System.out.println("KNN ==== " + o_S.KNN);
+//			System.out.println("RID ==== " + ((Record) o_S.obj).getRId());
+//			System.out.println("lrd ==== " + o_S.kdist);
+//			System.out.println("whoseSupport ==== " + o_S.whoseSupport);
+//			System.out.println("KNN ==== " + o_S.KNN);
 			float lof_core = 0.0f;
 			String[] splitKNN = o_S.KNN.split(SQConfig.sepStrForRecord);
 			for (int i = 0; i < splitKNN.length; i++) {
@@ -182,7 +182,7 @@ public class Cal_lof {
 				String[] tempSplit = tempString.split(SQConfig.sepSplitForIDDist);
 				float temp_lrd = hm.get(Integer.valueOf(tempSplit[0]));
 				float core_lrd = o_S.kdist;
-				System.out.println("temp lrd ==== " + temp_lrd);
+//				System.out.println("temp lrd ==== " + temp_lrd);
 				lof_core += temp_lrd / o_S.kdist * 1.0f;
 			}
 			lof_core = lof_core / K * 1.0f;
@@ -199,10 +199,8 @@ public class Cal_lof {
 
 	public void run(String[] args) throws Exception {
 		Configuration conf = new Configuration();
-		// conf.addResource(new
-		// Path("/usr/local/Cellar/hadoop/etc/hadoop/core-site.xml"));
-		// conf.addResource(new
-		// Path("/usr/local/Cellar/hadoop/etc/hadoop/hdfs-site.xml"));
+		conf.addResource(new Path("/usr/local/Cellar/hadoop/etc/hadoop/core-site.xml"));
+		conf.addResource(new Path("/usr/local/Cellar/hadoop/etc/hadoop/hdfs-site.xml"));
 		new GenericOptionsParser(conf, args).getRemainingArgs();
 		/** set job parameter */
 		Job job = Job.getInstance(conf, "Calculate lof");

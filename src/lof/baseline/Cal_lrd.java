@@ -211,10 +211,8 @@ public class Cal_lrd {
 
 	public void run(String[] args) throws Exception {
 		Configuration conf = new Configuration();
-		// conf.addResource(new
-		// Path("/usr/local/Cellar/hadoop/etc/hadoop/core-site.xml"));
-		// conf.addResource(new
-		// Path("/usr/local/Cellar/hadoop/etc/hadoop/hdfs-site.xml"));
+		conf.addResource(new Path("/usr/local/Cellar/hadoop/etc/hadoop/core-site.xml"));
+		conf.addResource(new Path("/usr/local/Cellar/hadoop/etc/hadoop/hdfs-site.xml"));
 		new GenericOptionsParser(conf, args).getRemainingArgs();
 		/** set job parameter */
 		Job job = Job.getInstance(conf, "Calculate lrd");

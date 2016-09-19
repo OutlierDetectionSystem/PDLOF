@@ -184,8 +184,8 @@ public class DataSplit {
 			}
 
 			/** set intermediate key */
-			if (closestDist > 11 * G)
-				return null;
+//			if (closestDist > 11 * G)
+//				return null;
 			MetricKey metricKey = new MetricKey();
 			metricKey.dist = closestDist;
 			metricKey.pid = closestPivot;
@@ -311,6 +311,8 @@ public class DataSplit {
 		job.setNumReduceTasks(0);
 
 		FileInputFormat.addInputPath(job, new Path(conf.get(SQConfig.dataset)));
+		FileSystem fs = FileSystem.get(conf);
+		fs.delete(new Path(conf.get(SQConfig.strLofInput)), true);
 		FileOutputFormat.setOutputPath(job, new Path(conf.get(SQConfig.strLofInput)));
 		job.addCacheFile(new URI(strFSName + conf.get(SQConfig.strPivotInput)));
 

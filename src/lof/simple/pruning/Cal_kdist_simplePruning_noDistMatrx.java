@@ -319,9 +319,9 @@ public class Cal_kdist_simplePruning_noDistMatrx {
 			    		return 0;
 			    }
 			});
-			for (MetricObject entry : sortedData) {
-					System.out.println("Entry: "+ entry.obj.toString());
-				}
+//			for (MetricObject entry : sortedData) {
+//					System.out.println("Entry: "+ entry.obj.toString());
+//				}
 			long begin = System.currentTimeMillis();
 			for (int i = 0;i<sortedData.size();i++) {
 				MetricObject o_S = sortedData.get(i);
