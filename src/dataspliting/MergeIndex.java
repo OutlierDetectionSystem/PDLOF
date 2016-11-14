@@ -140,7 +140,7 @@ public class MergeIndex {
 	}
 
 	private void writeToHDFS(FileSystem fs, String output_dir) {
-
+		double sumOfDiameter = 0;
 		try {
 			String filename = output_dir + "/summary"
 					+ SQConfig.strIndexExpression1;
@@ -160,6 +160,7 @@ public class MergeIndex {
 						+ SQConfig.sepStrForIndex + sizeOfObjects_R[i]
 						+ SQConfig.sepStrForIndex + numOfObjects_R[i]
 								+SQConfig.sepStrForIndex + numOfObjectsLarger11G[i];
+				sumOfDiameter += max_R[i];
 				/** output larger than G and number less than K*/
 				if(KNNObjectsToPivots_S[i].size() < K){
 //					System.out.println("Less than K points: " + line);
@@ -184,6 +185,7 @@ public class MergeIndex {
 			System.out.println("# of pivots Less than k points: "+ countLessThanKPoints);
 			System.out.println("# of pivots Larger than 11G: " + countLarger11G);
 			System.out.println("# of points Larger than 11G:" + countPointsLarger11G );
+			System.out.println("Sum of diameter: " +sumOfDiameter);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

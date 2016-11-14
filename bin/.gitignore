@@ -1,9 +1,3 @@
-/.DS_Store
-/dataspliting/
-/io/
-/lof/
-/metricspace/
-/preprocess/
 /templates/
-/triangulation/
 /util/
+/preprocess/

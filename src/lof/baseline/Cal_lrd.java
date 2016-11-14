@@ -192,7 +192,13 @@ public class Cal_lrd {
 				// System.out.println("splitKNN-----" + tempSplit[0] +
 				// "-----"+tempSplit.length);
 				float temp_dist = Float.valueOf(tempSplit[1]);
-				float temp_reach_dist = Math.max(temp_dist, hm.get(Integer.valueOf(tempSplit[0])));
+				float temp_reach_dist = 0.0f;
+				if(hm.containsKey(Integer.valueOf(tempSplit[0])))
+					temp_reach_dist = Math.max(temp_dist, hm.get(Integer.valueOf(tempSplit[0])));
+				else{
+					System.out.println("Cannot find this in HashMap, not in this partition?" + tempSplit[0]);
+					temp_reach_dist = temp_dist;
+				}
 				lrd_core += temp_reach_dist;
 			}
 			lrd_core = 1.0f / (lrd_core / K * 1.0f);

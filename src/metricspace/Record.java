@@ -34,6 +34,12 @@ public class Record implements Comparable<Object> {
 		return value;
 	}
 
+	public double [] getValueDouble(){
+		double [] newvalue = new double[value.length];
+		for(int i = 0; i< value.length;i++)
+			newvalue[i] = (double) value[i];
+		return newvalue;
+	}
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}

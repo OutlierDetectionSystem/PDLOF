@@ -92,6 +92,7 @@ public class PivotSelectionFactory extends APivotSelection {
 		int offsetOfSample;
 
 		while ((tmp = br.readLine()) != null) {
+//			System.out.println(tmp);
 			if (readLineIDs.containsKey(lineIDOfFile)) {
 				long value = readLineIDs.get(lineIDOfFile);
 				int offset = (int) (value & 0x00000000ffffffff);
@@ -256,7 +257,7 @@ public class PivotSelectionFactory extends APivotSelection {
 		Configuration conf = new Configuration();
 		new GenericOptionsParser(conf, args).getRemainingArgs();
 
-		inputPath = conf.get(SQConfig.dataset) + Path.SEPARATOR + "part-m-00000";
+		inputPath = conf.get(SQConfig.dataset) + Path.SEPARATOR + "dataForPic_id.txt";
 		outputPath = conf.get(SQConfig.strPivotInput);
 		strDomain = conf.get(SQConfig.strMetricSpace);
 		strMetric = conf.get(SQConfig.strMetric);

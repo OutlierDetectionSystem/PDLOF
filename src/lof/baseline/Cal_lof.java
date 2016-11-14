@@ -180,10 +180,12 @@ public class Cal_lof {
 
 				String tempString = splitKNN[i];
 				String[] tempSplit = tempString.split(SQConfig.sepSplitForIDDist);
-				float temp_lrd = hm.get(Integer.valueOf(tempSplit[0]));
-				float core_lrd = o_S.kdist;
-//				System.out.println("temp lrd ==== " + temp_lrd);
-				lof_core += temp_lrd / o_S.kdist * 1.0f;
+				if(hm.containsKey(Integer.valueOf(tempSplit[0]))){
+					float temp_lrd = hm.get(Integer.valueOf(tempSplit[0]));
+					float core_lrd = o_S.kdist;
+	//				System.out.println("temp lrd ==== " + temp_lrd);
+					lof_core += temp_lrd / o_S.kdist * 1.0f;
+				}
 			}
 			lof_core = lof_core / K * 1.0f;
 			// System.out.println("LRD-----" + lrd_core);
